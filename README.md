@@ -1,7 +1,7 @@
 # Hot Dogs and Cold Dogs
 
 ## Background
-The purpose of the project was to predict how long dogs around the United States are available for adoption before finding a forever home. The project evaluates a dataset of already adopted dogs (2018-2022) with a machine learning model and applies the model to dogs currently available for adoption. The topic was selected to help bring awareness to 'less desireable' dogs who are available for adoption and help them find homes more quickly. The availability of large amounts of adoption data also contributed to the selection of the topic.
+The purpose of the project was to predict how long dogs around the United States are available for adoption before finding a forever home. The project evaluates a dataset of already adopted dogs (2018-2022) with a machine learning model and applies the model to dogs currently available for adoption. The topic was selected to help bring awareness to 'less desirable' dogs who are available for adoption and help them find homes more quickly. The availability of large amounts of adoption data also contributed to the selection of the topic.
 
 ### Data Sources
 The primary source of data used in the analysis was Petfinder. Petfinder is the largest online pet adoption website serving North America. According to Petfinder.com, users can browse pets from their network of over 11,500 shelters. Petfinder provides a free Application Programming Interface (API) to access the Petfinder database which contains information about hundreds of thousands of pets currently available for adoption and those already adopted. In addition to the Petfinder API, population data for all municipalities in the United States was gathered from the United States Census Bureau (census.gov).
