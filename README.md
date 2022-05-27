@@ -38,3 +38,6 @@ A benefit of the Random Forest model is that the results are easy to interpret a
 
 ## Implementation and Visualization
 The final piece of the project was to use the model to predict how long pets currently available for adoption will find a forever home. After importing the model, users are prompted to enter the characteristics they desire in a dog along with their state. These responses prompt and API call which returns a list of currently available dog which meet the criteria. The resulting dataframe is then cleaned and encoded in the same was as the static data and passed through the model to make predictions. The predictions are then merged with the original dataframe that was returned from the query and coordinates for each dog's location is calculated. The most desireable and least desireable dogs are identified and a map of their locations and key features are displayed for the user. I do not plan to create a dashboard, per se, but a map will be displayed with locations of dogs available for adoption. If additional visual elements are required, I will use Tableau to summarize the static data from which the model was created.
+
+## Presentation
+https://docs.google.com/presentation/d/1vGYFK7Ut38aAgXL294WOICA2HJpwQkASm87Oc57s_Qs/edit?usp=sharing
