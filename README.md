@@ -15,7 +15,7 @@ Python was used to import, clean, and analyze the data. PostgreSQL was used to s
 ## Analysis
 
 ### Data Collection
-The Petfinder API allows users to call 'animals' to retun a list of animal based on query parameters (e.g., type, breed, size, gender, age, color, status). Petfinder limits the number of results per query and the number of querys per day per user. As a result, a total of twelve queries were used to obtain pet adoption information for each state in the midwest (below). The queries gather pet adoptions from January 1, 2018 to May 1, 2022.
+The Petfinder API allows users to call 'animals' to return a list of animal based on query parameters (e.g., type, breed, size, gender, age, color, status). Petfinder limits the number of results per query and the number of queriess per day per user. As a result, a total of twelve queries were used to obtain pet adoption information for each state in the midwest (below). The queries gather pet adoptions from January 1, 2018 to May 1, 2022.
 
 ![api_call](https://user-images.githubusercontent.com/96216947/170718619-2dedfb5a-ecc0-4236-b432-4da7c35c676c.PNG)
 
