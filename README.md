@@ -27,7 +27,10 @@ The data collected from the Petfinder API totaled greater than 150,000 lines. Gi
 ![data_export](https://user-images.githubusercontent.com/96216947/170719519-53ec2fb3-f827-4900-822b-fb2be93b58e6.PNG)
 
 ### Data Cleaning
+The list of adopted dogs contained an assortment of data (e.g., integers, booleans, strings, dictionaries). The initial cleaning of the data included renaming the columns and combining the city and state into a single column prior to exporting back into PostgreSQL. Once uploaded to the database, select columns from the dog adoptions table were joined with the populations table. The resulting table included the following columns: age, gender, size, status_changed_at (datetime), published_at (datetime), breeds_primary, breeds_mixed, breeds_unknown, spayed_neutered, house_trained, special_needs, shots_current, location, population. The table was then imported back into Jupyter Notebook for additional cleaning and encoding. Cleaning tasks included encoding boolean values, gender, size (e.g. large, small), and age (e.g., baby, adult). Initially, the breeds column was encoded to include 15 breeds and an 'other' group, but initial analysis revealed the breed is not a significant feature. Instead, a column was added to identify whether the dog was part or full pitbull. The status_changed_at column was subtracted from the published_at column to determine the length of time the dog was available for adoption and the values were bucketed into 'greater than one week' and 'less than one week'. More buckets were created initially; however, the model was found to be quite inaccurate. In addition, the population column was bucketed.
 
+
+Prior to cleaning the data, counts of NaN values in each column were determined to help identify which columns did not have enough information to be useful. 
 
 
 ## Database
