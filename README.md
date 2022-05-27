@@ -29,18 +29,11 @@ The data collected from the Petfinder API totaled greater than 150,000 lines. Gi
 ### Data Cleaning
 The list of adopted dogs contained an assortment of data (e.g., integers, booleans, strings, dictionaries). The initial cleaning of the data included renaming the columns and combining the city and state into a single column prior to exporting back into PostgreSQL. Once uploaded to the database, select columns from the dog adoptions table were joined with the populations table. The resulting table included the following columns: age, gender, size, status_changed_at (datetime), published_at (datetime), breeds_primary, breeds_mixed, breeds_unknown, spayed_neutered, house_trained, special_needs, shots_current, location, population. The table was then imported back into Jupyter Notebook for additional cleaning and encoding. Cleaning tasks included encoding boolean values, gender, size (e.g. large, small), and age (e.g., baby, adult). Initially, the breeds column was encoded to include 15 breeds and an 'other' group, but initial analysis revealed the breed is not a significant feature. Instead, a column was added to identify whether the dog was part or full pitbull. The status_changed_at column was subtracted from the published_at column to determine the length of time the dog was available for adoption and the values were bucketed into 'greater than one week' and 'less than one week'. More buckets were created initially; however, the model was found to be quite inaccurate. In addition, the population column was bucketed.
 
+### Machine Learning
+The cleaned and encoded data was split to X and y features with duration (i.e., less than one week (1), greater than one week (0)) as the y feature. The encoded data was then passed through a Random Forest Classifier (n_estimators=128). Results from the training and testing of the model are displayed below. The model achieved an accuracy of 68%.
 
-Prior to cleaning the data, counts of NaN values in each column were determined to help identify which columns did not have enough information to be useful. 
+![confusion_matrix](https://user-images.githubusercontent.com/96216947/170724888-2c6d7a2f-cf1d-44f6-a532-1c4ef02e0901.PNG)
 
+The model was then saved for future use using pickle.dump.
 
-## Database
-
-Static data will be stored using PostgreSQL. This data includes a table of all organizations in Wisconsin and a table of all pets adopted. The two tables will be joined in PostgreSQL and then imported into pandas for the machine learning model. The table of organizations will also be joined with a table of unadopted pets to predict when the pets will be adopted and I may also plot their locations on a map.
-
-## Resources & Technology
-Kaggle Data source: https://www.kaggle.com/datasets/kwadwoofosu/predict-test-scores-of-students
-Jupyter Notebook will be used for our data analysis.
-Postgres (SQL) will be used for our data storage.
-
-## Machine Learning Model
-There is minimal data cleaning that we need to do. We will look to drop null values if there are any. We will be doing a random forest on our dataset. The reason is because we are going to look at the impact of the features by their weight on the scores. Our machine learning model will be supervised regression analysis.
+## Visualization
