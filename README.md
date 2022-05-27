@@ -1,14 +1,34 @@
-# Finding_Pets
+# Hot Dogs and Cold Dogs
 
 ## Background
+The purpose of the project was to predict how long dogs around the United States are available for adoption before finding a forever home. The project evaluates a dataset of already adopted dogs (2018-2022) with a machine learning model and applies the model to dogs currently available for adoption. The topic was selected to help bring awareness to 'less desireable' dogs who are available for adoption and help them find homes more quickly. The availability of large amounts of adoption data also contributed to the selection of the topic.
 
-The purpose of the project will be to help expediate the adoption of pets. A recurrent neural network will be used to predict the amount of time dogs spend waiting to be adopted based on several characteristics (e.g., age, breed, size, vaccination status). Data will be obtained from PetFinder's API for dogs that have been adopted in the past year. The results of machine learning model will then be used to predict when dogs currently available for adoption will be adopted. The topic was selected because I am a dog lover and believe all pets deserve a loving home. The data is also readily available and extensive. The primary question is 'what factors influence how quickly a dog is adopted'. The analysis will focus on adoptions near my hometown, Eau Claire, WI.
+### Data Sources
+The primary source of data used in the analysis was Petfinder. Petfinder is the largest online pet adoption website serving North America. According to Petfinder.com, users can browse pets from their network of over 11,500 shelters. Petfinder provides a free Application Programming Interface (API) to access the Petfinder database which contains information about hundreds of thousands of pets currently available for adoption and those already adopted. In addition to the Petfinder API, population data for all municipalities in the United States was gathered from the United States Census Bureau (census.gov).
 
-### Questions
-Based on environmental factors such as school setting, school type, teaching method, classroom size, and socio-economic status (indicated by lunch status), can we predict what a student’s test score increase (in percentage points) will be?
-Which of the factors assessed are the most important in determining a student’s score increase?
+### Questions and Initial Investigation
+The project aims to identify which features have the greatest impact on the duration a dog remains available for adoption and to predict how long currently available dogs will need a temporary home. Exploration of Petfinder data revealed the availability of greater than 50 features for each pet currently available for adoption or already adopted. These features included, but were not limited to, species, breed, age, color, temprement, health status, location, dates, and images. These features provided more than enough opportunity to identify those that contribute to adoption status; however, the human population of each dog location was also believed to be an important feature.
 
-I will be working on this project independently to maximize the learning experience.
+### Technology
+Python was used to import, clean, and analyze the data. PostgreSQL was used to store the data. Microsoft Excel was also used.
+
+## Analysis
+
+### Data Collection
+The Petfinder API allows users to call 'animals' to retun a list of animal based on query parameters (e.g., type, breed, size, gender, age, color, status). Petfinder limits the number of results per query and the number of querys per day per user. As a result, a total of twelve queries were used to obtain pet adoption information for each state in the midwest (below). The queries gather pet adoptions from January 1, 2018 to May 1, 2022.
+
+![api_call](https://user-images.githubusercontent.com/96216947/170718619-2dedfb5a-ecc0-4236-b432-4da7c35c676c.PNG)
+
+A csv file was also obtained from the United Status Census Bureau and quickly cleaned in Microsoft Excel.
+
+### Database
+The data collected from the Petfinder API totaled greater than 150,000 lines. Given the length of time necessary to collect the data, the raw data was exported to PostgreSQL for future use. The script used for export from Jupyter Notebook is below. The spreadsheet containing populations was directly uploaded to PostgreSQL.
+
+![data_export](https://user-images.githubusercontent.com/96216947/170719519-53ec2fb3-f827-4900-822b-fb2be93b58e6.PNG)
+
+### Data Cleaning
+
+
 
 ## Database
 
