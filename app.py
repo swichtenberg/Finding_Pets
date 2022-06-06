@@ -145,56 +145,48 @@ def index():
         cold_dogs=viz_df.loc[viz_df['duration'] == 1]
         hot_dogs= viz_df.loc[viz_df['duration'] == 0]
 
-        def html_table():
+        geolocator = Nominatim(user_agent='http')
 
-            return render_template('tables.html', tables=[cold_dogs.to_html(classes='data')], titles=cold_dogs.columns.values)
+        cold_dogs['location'] = viz_df['city'] + ', ' + viz_df['state']
+        # cold_dogs = cold_dogs.drop(['city', 'state'], axis=1)
+        hot_dogs['location'] = viz_df['city'] + ', ' + viz_df['state']
+        # hot_dogs = cold_dogs.drop(['city', 'state'], axis=1)
 
-        # geolocator = Nominatim(user_agent='http')
+        cold_dogs[['lat', 'lon']] = cold_dogs['location'].apply(geolocator.geocode).apply(lambda x: pd.Series([x.latitude, x.longitude], index=['lat', 'lon']))
+        hot_dogs[['lat', 'lon']] = hot_dogs['location'].apply(geolocator.geocode).apply(lambda x: pd.Series([x.latitude, x.longitude], index=['lat', 'lon']))
 
-        # cold_dogs['location'] = viz_df['city'] + ', ' + viz_df['state']
-        # # cold_dogs = cold_dogs.drop(['city', 'state'], axis=1)
-        # hot_dogs['location'] = viz_df['city'] + ', ' + viz_df['state']
-        # # hot_dogs = cold_dogs.drop(['city', 'state'], axis=1)
+        # Configure gmaps to use your Google API key.
+        gmaps.configure(api_key=gkey)
 
-        # cold_dogs[['lat', 'lon']] = cold_dogs['location'].apply(geolocator.geocode).apply(lambda x: pd.Series([x.latitude, x.longitude], index=['lat', 'lon']))
-        # hot_dogs[['lat', 'lon']] = hot_dogs['location'].apply(geolocator.geocode).apply(lambda x: pd.Series([x.latitude, x.longitude], index=['lat', 'lon']))
+        # 9. Using the template add city name, the country code, the weather description and maximum temperature for the city.
+        info_box_template = """
+        <dl>
+        <dt>Name</dt><dd>{name}</dd>
+        <dt>Age</dt><dd>{age}</dd>
+        <dt>URL</dt><dd>{url}</dd>
+        <dt>Location</dt><dd>{location}</dd>
+        </dl>
+        """
 
-        # # Configure gmaps to use your Google API key.
-        # gmaps.configure(api_key=gkey)
+        # 10a. Get the data from each row and add it to the formatting template and store the data in a list.
+        cold_dog_info = [info_box_template.format(**row) for index, row in cold_dogs.iterrows()]
+        hot_dog_info = [info_box_template.format(**row) for index, row in hot_dogs.iterrows()]
 
-        # # 9. Using the template add city name, the country code, the weather description and maximum temperature for the city.
-        # info_box_template = """
-        # <dl>
-        # <dt>Name</dt><dd>{name}</dd>
-        # <dt>Age</dt><dd>{age}</dd>
-        # <dt>URL</dt><dd>{url}</dd>
-        # <dt>Location</dt><dd>{location}</dd>
-        # </dl>
-        # """
+        # 10b. Get the latitude and longitude from each row and store in a new DataFrame.
+        cold_locations = cold_dogs[["lat", "lon"]]
+        hot_locations = hot_dogs[["lat", "lon"]]
 
-        # # 10a. Get the data from each row and add it to the formatting template and store the data in a list.
-        # cold_dog_info = [info_box_template.format(**row) for index, row in cold_dogs.iterrows()]
-        # hot_dog_info = [info_box_template.format(**row) for index, row in hot_dogs.iterrows()]
+        # 11a. Add a marker layer for each city to the map. 
+        cold_fig = gmaps.figure(center=(30.0, 31.0), zoom_level=1.5)
+        marker_layer = gmaps.marker_layer(cold_locations, info_box_content=cold_dog_info)
+        cold_fig.add_layer(marker_layer)
+        embed_minimal_html('templates/cold_export.html', views=[cold_fig])
 
-        # # 10b. Get the latitude and longitude from each row and store in a new DataFrame.
-        # cold_locations = cold_dogs[["lat", "lon"]]
-        # hot_locations = hot_dogs[["lat", "lon"]]
-
-        # # 11a. Add a marker layer for each city to the map. 
-        # cold_fig = gmaps.figure(center=(30.0, 31.0), zoom_level=1.5)
-        # marker_layer = gmaps.marker_layer(cold_locations, info_box_content=cold_dog_info)
-        # cold_fig.add_layer(marker_layer)
-
-        # # 11b. Display the figure
-        # cold_fig
-
-        # # 11a. Add a marker layer for each city to the map. 
-        # hot_fig = gmaps.figure(center=(30.0, 31.0), zoom_level=1.5)
-        # marker_layer = gmaps.marker_layer(hot_locations, info_box_content=hot_dog_info)
-        # hot_fig.add_layer(marker_layer)
-
-        # # 11b. Display the figure
-        # hot_fig
+        # 11a. Add a marker layer for each city to the map. 
+        hot_fig = gmaps.figure(center=(30.0, 31.0), zoom_level=1.5)
+        marker_layer = gmaps.marker_layer(hot_locations, info_box_content=hot_dog_info)
+        hot_fig.add_layer(marker_layer)
+        embed_minimal_html('templates/hot_export.html', views=[hot_fig])
 
 
     return render_template("index.html", featureList=featureList, prediction=prediction)
