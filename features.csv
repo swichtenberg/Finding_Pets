@@ -1,0 +1,4 @@
+﻿Name,Label,Value
+Age,"Enter the preferred age (baby, young, adult, senior)",NaN
+Gender,"Enter the preferred gender (male, female)",NaN
+Location,"Enter your state (e.g., WI, MN)",NaN
