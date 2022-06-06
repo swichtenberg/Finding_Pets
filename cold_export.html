@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPyWidget export</title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "c0d9d98ce19a4b94959a3ce3cea429ae": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "1.2.0",
+      "state": {
+        "height": "100%",
+        "width": "100%"
+      }
+    },
+    "2202f59c3e4642b7b8e62b8c80b9df64": {
+      "model_name": "PlainmapModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "_dom_classes": [],
+        "configuration": {
+          "api_key": "AIzaSyC_HDlYi6NEah11KtUC6ff94ypH0RSKyds"
+        },
+        "data_bounds": [
+          [
+            42.54942260000001,
+            -91.88171565289713
+          ],
+          [
+            46.57940180000001,
+            -87.90991764710293
+          ]
+        ],
+        "initial_viewport": {
+          "type": "ZOOM_CENTER",
+          "center": [
+            30.0,
+            31.0
+          ],
+          "zoom_level": 1.5
+        },
+        "layers": [
+          "IPY_MODEL_9adcf2895a14426696c50e8dc5f4326e"
+        ],
+        "layout": "IPY_MODEL_c0d9d98ce19a4b94959a3ce3cea429ae"
+      }
+    },
+    "c1c78fef2a5748d1b3bb333ee9b2a56a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "1.2.0",
+      "state": {}
+    },
+    "c9214487944f47419f78143164cc8eed": {
+      "model_name": "ToolbarModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "_dom_classes": [],
+        "layer_controls": [],
+        "layout": "IPY_MODEL_c1c78fef2a5748d1b3bb333ee9b2a56a"
+      }
+    },
+    "20391c347aa741289c08fd301c240f9a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "1.2.0",
+      "state": {}
+    },
+    "8d740ce582cf4bbc953fb78d9da94b53": {
+      "model_name": "ErrorsBoxModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "_dom_classes": [],
+        "errors": [],
+        "layout": "IPY_MODEL_20391c347aa741289c08fd301c240f9a"
+      }
+    },
+    "f8ead36aaed14c43a1b2c76270bf7b65": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "1.2.0",
+      "state": {
+        "height": "420px"
+      }
+    },
+    "b0ca4d1eacc0417ba098fb0f397fbca3": {
+      "model_name": "FigureModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "_dom_classes": [],
+        "_errors_box": "IPY_MODEL_8d740ce582cf4bbc953fb78d9da94b53",
+        "_map": "IPY_MODEL_2202f59c3e4642b7b8e62b8c80b9df64",
+        "_toolbar": "IPY_MODEL_c9214487944f47419f78143164cc8eed",
+        "layout": "IPY_MODEL_f8ead36aaed14c43a1b2c76270bf7b65"
+      }
+    },
+    "a0bcc191e0464042bd33f8fdeaaa041f": {
+      "model_name": "MarkerModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "display_info_box": true,
+        "info_box_content": "\n        <dl>\n        <dt>Name</dt><dd>Ruger</dd>\n        <dt>Age</dt><dd>Adult</dd>\n        <dt>URL</dt><dd>https://www.petfinder.com/dog/ruger-55652600/wi/viroqua/driftless-humane-society-wi86/?referrer_id=213d650f-21dc-4248-b524-1000dfa466a8</dd>\n        <dt>Location</dt><dd>Viroqua, WI</dd>\n        </dl>\n        ",
+        "location": [
+          43.5569174,
+          -90.8887413
+        ]
+      }
+    },
+    "84e5bdd21cf546ce8a542610755a7e8e": {
+      "model_name": "MarkerModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "display_info_box": true,
+        "info_box_content": "\n        <dl>\n        <dt>Name</dt><dd>Utah</dd>\n        <dt>Age</dt><dd>Adult</dd>\n        <dt>URL</dt><dd>https://www.petfinder.com/dog/utah-55093890/wi/crandon/forest-county-humane-society-wi62/?referrer_id=213d650f-21dc-4248-b524-1000dfa466a8</dd>\n        <dt>Location</dt><dd>Crandon, WI</dd>\n        </dl>\n        ",
+        "location": [
+          45.571907,
+          -88.902892
+        ]
+      }
+    },
+    "9adcf2895a14426696c50e8dc5f4326e": {
+      "model_name": "MarkerLayerModel",
+      "model_module": "jupyter-gmaps",
+      "model_module_version": "0.9.0",
+      "state": {
+        "data_bounds": [
+          [
+            42.54942260000001,
+            -91.88171565289713
+          ],
+          [
+            46.57940180000001,
+            -87.90991764710293
+          ]
+        ],
+        "markers": [
+          "IPY_MODEL_a0bcc191e0464042bd33f8fdeaaa041f",
+          "IPY_MODEL_84e5bdd21cf546ce8a542610755a7e8e"
+        ]
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "b0ca4d1eacc0417ba098fb0f397fbca3"}
+</script>
+
+</body>
+</html>
